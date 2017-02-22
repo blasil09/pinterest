@@ -1,4 +1,7 @@
 Pinterest::Application.routes.draw do
+  resources :pins
+
+
   get "welcome/index"
 
   # The priority is based upon order of creation:
