@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.21'
 
@@ -25,7 +25,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'turbolinks'
+#gem 'turbolinks'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
