@@ -59,13 +59,14 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
 
     respond_to do |format|
-      if @pin.update_attributes(params[:pin])
+     # if @pin.update_attributes(params[:pin])#@pin.update(pin_params)
+        
         format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
         format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
-      end
+      #else
+       # format.html { render action: "edit" }
+      #  format.json { render json: @pin.errors, status: :unprocessable_entity }
+     # end
     end
   end
 
@@ -80,4 +81,8 @@ class PinsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def pin_params
+     params.require(:pin).permit(:photo, :description, :name)
+   end
 end
