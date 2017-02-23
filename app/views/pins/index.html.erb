@@ -1,25 +1,23 @@
 <div class="container">
 <h1>Listing pins</h1>
 
-<table>
-  <tr>
-    <th>Photo</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
+ 
 <% @pins.each do |pin| %>
-  <tr>
-    <td><%= image_tag(pin.photo, :style=>'width:150px') %></td>
-    <td><%= pin.description %></td>
-    <td><%= link_to 'Show', pin %></td>
-    <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-    <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+
+<div class="col-md-3">
+<div class="thumbnail">
+  <%= image_tag(pin.photo, :class =>'img-responsive') %>
+  <%= pin.description %>
+  <div class="buttons" style ="margin-top:10px; margin-bottom: 10px"> 
+  <%= link_to 'Show', pin, :class=>'btn' %>
+  <%= link_to 'Edit', edit_pin_path(pin), :class=>'btn'%>
+  <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>'btn' %>
+</div>
+</div>
+</div>
 <% end %>
-</table>
+
 
 <br />
 
