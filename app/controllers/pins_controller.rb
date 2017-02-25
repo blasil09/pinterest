@@ -1,6 +1,20 @@
 class PinsController < ApplicationController
-  # GET /pins
+ 
+  before_filter :authenticate_user!, except: [:index, :show]
   # GET /pins.json
+
+  def pinsof
+   @user_id = params[:user_id]
+   @user = User.find(@user_id)
+   @pins = @user.pins
+  
+  end 
+
+  def mypins
+    @pins = current_user.pins
+  end 
+
+
   def index
     @pins = Pin.all
 
@@ -59,14 +73,14 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
 
     respond_to do |format|
-     # if @pin.update_attributes(params[:pin])#@pin.update(pin_params)
+     if @pin.update_attributes(params[:pin])#@pin.update(pin_params)
         
         format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
         format.json { head :no_content }
-      #else
-       # format.html { render action: "edit" }
-      #  format.json { render json: @pin.errors, status: :unprocessable_entity }
-     # end
+      else
+       format.html { render action: "edit" }
+      format.json { render json: @pin.errors, status: :unprocessable_entity }
+     end
     end
   end
 

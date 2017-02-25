@@ -1,9 +1,15 @@
 Pinterest::Application.routes.draw do
+  devise_for :users
+
   resources :pins
 
 
   get "welcome/index"
+  
+  get 'mypins' => 'pins#mypins'
+  get 'pinsof/:user_id' => 'pins#pinsof', :as => "pinsof"
 
+  #root "welcome#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
