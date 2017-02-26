@@ -4,9 +4,9 @@ Pinterest::Application.routes.draw do
   resources :pins
 
 
-  get "welcome/index" 
+ get "welcome/index" 
   
-  #root :to => "welcome#index"
+  root :to => "welcome#index"
 
   get 'mypins' => 'pins#mypins'
   get 'pinsof/:user_id' => 'pins#pinsof', :as => "pinsof"
